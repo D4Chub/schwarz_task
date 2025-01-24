@@ -60,7 +60,7 @@ class BookAPITestCase(APITestCase):
             "last_name": "Smith",
             "middle_name": "Middle"
         }
-        response = self.client.post("/api/v1/authors/create/", author_data, format="json")
+        response = self.client.post("/api/v1/authors/", author_data, format="json")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data['name'], author_data['name'])
 
@@ -68,7 +68,7 @@ class BookAPITestCase(APITestCase):
         genre_data = {
             "name": "Science Fiction"
         }
-        response = self.client.post("/api/v1/genres/create/", genre_data, format="json")
+        response = self.client.post("/api/v1/genres/", genre_data, format="json")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data['name'], genre_data['name'])
 
