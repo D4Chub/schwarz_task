@@ -1,5 +1,8 @@
 from rest_framework import generics
 from books.models import Authors, Genres, Books
+from django_filters.rest_framework import DjangoFilterBackend
+
+from books.filters import BookFilter
 from .serializers import (
     AuthorSerializer,
     GenreSerializer,
@@ -10,6 +13,8 @@ from .serializers import (
 
 class BookListCreateView(generics.ListCreateAPIView):
     queryset = Books.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = BookFilter
 
     def get_serializer_class(self):
         if self.request.method == 'POST':
