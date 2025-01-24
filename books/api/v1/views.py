@@ -8,9 +8,13 @@ from .serializers import (
 )
 
 
-class BookListCreateView(generics.CreateAPIView):
+class BookListCreateView(generics.ListCreateAPIView):
     queryset = Books.objects.all()
-    serializer_class = BookSerializer
+
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return BookSerializer
+        return BookDetailSerializer
 
 
 class BookRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
@@ -22,12 +26,12 @@ class BookRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
         return BookDetailSerializer
 
 
-class AuthorCreateView(generics.CreateAPIView):
+class AuthorCreateView(generics.ListCreateAPIView):
     queryset = Authors.objects.all()
     serializer_class = AuthorSerializer
 
 
-class GenreCreateView(generics.CreateAPIView):
+class GenreCreateView(generics.ListCreateAPIView):
     queryset = Genres.objects.all()
     serializer_class = GenreSerializer
 
