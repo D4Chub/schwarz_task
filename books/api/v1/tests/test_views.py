@@ -12,21 +12,21 @@ class BookAPITestCase(APITestCase):
             name="Test Book",
             author=self.author,
             genre=self.genre,
-            publishing_year=2025
+            publishing_year="2025-10-10"
         )
         
         self.book_data = {
             "name": "New Book Title",
             "author": self.author.id,
             "genre": self.genre.id,
-            "publishing_year": 2025
+            "publishing_year": "2025-10-10"
         }
 
         self.book_update_data = {
             "name": "Updated Book Title",
             "author": self.author.id,
             "genre": self.genre.id,
-            "publishing_year": 2026
+            "publishing_year": "2026-10-10"
         }
 
     def test_create_book(self):
