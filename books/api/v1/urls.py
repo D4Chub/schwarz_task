@@ -8,7 +8,7 @@ from .views import (
     GenreCreateView,
 )
 
-app_name = 'books_api'
+app_name = 'books'
 
 urlpatterns = [
     path('books/', BookListCreateView.as_view(), name='book_list_create'),
