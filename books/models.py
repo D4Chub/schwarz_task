@@ -44,7 +44,7 @@ class Books(models.Model):
         verbose_name="Жанр",
         related_name="books",
     )
-    publishing_year = models.IntegerField("Год издания")
+    publishing_year = models.DateField("Год издания")
 
     class Meta:
         verbose_name = "Книга"
